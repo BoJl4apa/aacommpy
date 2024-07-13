@@ -1,9 +1,28 @@
 import os
-#this array define all of the folder name contain AAComm.dll file of AAComm nuget package
-NET_FRAMEWORK_CHOICES = ['net40', 'net46', 'net48', 'netcoreapp3.1', 'net5.0', 'net6.0','net7.0']
+
+# .NET framework versions supported by AAComm nuget package
+NET40                   = 'net40'
+NET48                   = 'net48'
+NET60                   = 'net6.0'
+NET80                   = 'net8.0'
+
+NET_FRAMEWORK_CHOICES   = [NET40, NET48, NET60, NET80]
+TARGET_FRAMEWORKS       = ["4.0", "4.8", "6.0", "8.0"]
+DEFAULT_NET_FRAMEWORK   = NET48
+
+NUGET_EXE               = 'nuget.exe'
+NUGET_FOLDER            = 'aacommpyDownloader-main'
+
+# nuget dependencies and special case for .NET 4.0
+YAML_DOT_NET            = 'YamlDotNet'
+YAML_DOT_NET_40_VER     = '4.2.2'
+SYSTEM_IO_PORTS         = 'System.IO.Ports'
+
+AGITO_AACOMM            = 'Agito.AAComm'
+AACOMM_DLL              = 'AAComm.dll'
+AACOMMSERVER            = 'AACommServer'
+
 # there will be 2 constants add into this file name "AACOMM_DLL_PATH" and "AACOMM_SERVER_EXE_PATH" when run "aacommpy install" and "aacommpy update"
-dll_filename = 'AAComm.dll'
-exe_filename = 'AACommServer.exe'
-current_dir = os.path.dirname(__file__)
-AACOMM_DLL_PATH = os.path.join(current_dir, 'AAComm.dll')
-AACOMM_SERVER_EXE_PATH = os.path.join(current_dir, 'AACommServer.exe')
+current_dir             = os.path.dirname(__file__)
+AACOMM_DLL_PATH         = os.path.join(current_dir, AACOMM_DLL)
+AACOMM_SERVER_EXE_PATH  = os.path.join(current_dir, f'{AACOMMSERVER}.exe')

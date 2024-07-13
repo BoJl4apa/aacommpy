@@ -1,12 +1,5 @@
-import clr
-import os
-
-from aacommpy.settings import AACOMM_SERVER_EXE_PATH, AACOMM_DLL_PATH
-from aacommpy.AAComm import CommAPI, Services, Shared, ChannelType, ProductTypes, ConnectionData
-
-# from AAComm import Services
-# from AAComm import CommAPI
-# from AAComm import Shared
+from aacommpy.settings import AACOMM_SERVER_EXE_PATH
+from aacommpy.AAComm import CommAPI, Services, Shared
 
 api = CommAPI()
 

@@ -4,10 +4,10 @@ from setuptools import setup
 about = {
     'name': 'aacommpy',
     'description': 'A Python package for wrapping aacomm nuget package',
-    'version': '0.1.38',
-    'author': 'HIEU',
-    'author_email': 'trunghieupcs@gmail.com',
-    'url': 'https://github.com/hieu/aacommpy',
+    'version': '0.2.0',
+    'author': 'HIEU and DB',
+    'author_email': 'daniel.brousser@akribis-sys.com',
+    'url': 'https://github.com/BoJl4apa/aacommpy',
     'license': 'MIT',
 }
 here = os.path.abspath(os.path.dirname(__file__))
@@ -36,7 +36,7 @@ setup(
         'console_scripts': ['aacommpy=aacommpy.entry_points:main'],
     },
     classifiers=[
-        'Development Status :: 4 - Beta',
+        'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',
         'Programming Language :: Python :: 3.10',
     ],

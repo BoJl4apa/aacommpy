@@ -1,9 +1,9 @@
 
 __title__ = 'aacommpy'
 __description__ = 'aacommpy - AACOMM nuget package wrapper'
-__version__ = '0.1.38'
-__author__ = 'HIEU'
-__author_email__ = 'trunghieupcs@gmail.com'
+__version__ = '0.2.0'
+__author__ = 'HIEU and DB'
+__author_email__ = 'daniel.brousser@akribis-sys.com'
 __license__ = 'MIT'
 # fake url
-__url__ = 'https://github.com/jamesbond90/aacommpyDownloader'
+__url__ = 'https://github.com/BoJl4apa/aacommpy'

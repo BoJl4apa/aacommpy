@@ -1,0 +1,43 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Install",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/aacommpy/entry_points.py",
+            "console": "integratedTerminal",
+            // "args": ["install", "--version", "4.0"],
+            "args": ["install"],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "name": "Python: Version",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/aacommpy/entry_points.py",
+            "console": "integratedTerminal",
+            "args": ["version"],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "name": "Python: dotnetfw",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/aacommpy/entry_points.py",
+            "console": "integratedTerminal",
+            "args": ["dotnetfw", "--netfw", "net48"],
+            // "args": ["dotnetfw", "--netfw", "net6.0"],
+            // "args": ["dotnetfw"],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "name": "Python: Test AAComm",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/aacommpy/test.py",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}
