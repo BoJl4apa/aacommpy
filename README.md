@@ -13,21 +13,20 @@ Once the package is installed, you can access its functionalities from your Pyth
 2. Usage
 To use AACommPy, you can import the necessary modules and call the available functions. Here's an example of how to use the package:
 ---------python------------
-import clr
-import os
-path = os.path.join(os.path.dirname(__file__), 'AAComm.dll')
-clr.AddReference(path)
-from AAComm import Services
-from AAComm import CommAPI
-from AAComm import Shared
+from aacommpy.settings import AACOMM_SERVER_EXE_PATH
+from aacommpy.AAComm import CommAPI, Services, Shared
+
 api = CommAPI()
-status = CommAPI.StartAACommServer()
+
+status = CommAPI.StartAACommServer(AACOMM_SERVER_EXE_PATH)
+
 if status != "":
     print(status)
 else:
     # Access the static variable IsAACommServerRunning
     is_running = CommAPI.IsAACommServerRunning
     print(f"AACommServer is running: {is_running}")
+
 cData = Services.ConnectionData()
 cData.ControllerType = Shared.ProductTypes.AGM800_ID
 cData.CommChannelType = Shared.ChannelType.Ethernet
@@ -36,9 +35,10 @@ cData.ET_IP_2 = 1
 cData.ET_IP_3 = 1
 cData.ET_IP_4 = 101
 cData.ET_Port = 5000
+
 res = api.Connect(cData)
-print(res)
--------------------------
+print(res)-------------------------
+
 3.Available Commands
 AACommPy provides several commands that can be executed through the command line using the installed package. These commands include:
 
@@ -46,7 +46,7 @@ AACommPy provides several commands that can be executed through the command line
     the version number is the same with the AAComm nuget package version you want to use with you python script.
 3.2.version: Retrieves the installed version of AAComm.
 3.3.update: Updates the installed AAComm package to the latest version.
-3.4.dotnetfw: Sets the .NET framework version of AAComm library. You can choose from the available options: net40, net46, net48, netcoreapp3.1, net5.0. The default version is net40.
+3.4.dotnetfw: Sets the .NET framework version of AAComm library. You can choose from the available options: net40, net48, net6.0, net8.0. The default version is net48.
 
 Example Usage
 Here's an example of how to use the AACommPy package:
@@ -64,8 +64,7 @@ aacommpy version
 #Update the AAComm package to the latest version:
 
 aacommpy update
-#Set the .NET framework version to be used by AAComm to net5.0:
+#Set the .NET framework version to be used by AAComm to net4.8:
 
-
-aacommpy dotnetfw --netfw net5.0
+aacommpy dotnetfw --netfw net48
 #Please note that the usage examples provided assume that you have the necessary permissions to install packages and run the commands.
