@@ -6,8 +6,8 @@ import time
 
 import requests
 
-from aacommpy.dotnetmanagement import copy_nuget_dependencies
-from aacommpy.settings import AACOMM_DLL, AACOMMSERVER, AGITO_AACOMM, DEFAULT_NET_FRAMEWORK, NET_FRAMEWORK_CHOICES, NUGET_EXE, NUGET_FOLDER, SYSTEM_IO_PORTS, SYSTEM_IO_PORTS_VERSION, YAML_DOT_NET, YAML_DOT_NET_40_VER
+from dotnetmanagement import copy_nuget_dependencies
+from settings import AACOMM_DLL, AACOMMSERVER, AGITO_AACOMM, DEFAULT_NET_FRAMEWORK, NET_FRAMEWORK_CHOICES, NUGET_EXE, NUGET_FOLDER, SYSTEM_IO_PORTS, YAML_DOT_NET, YAML_DOT_NET_40_VER
 
 def dotnetfw(version: str = DEFAULT_NET_FRAMEWORK) -> None:
     if version not in NET_FRAMEWORK_CHOICES:
@@ -80,7 +80,7 @@ def download_aacomm_nuget(version: str = "", update: bool = False) -> None:
     install_nuget(nuget_path, YAML_DOT_NET, YAML_DOT_NET_40_VER)
 
     # install nuget dependency: System.IO.Ports 8.0.0 for .NET 6.0 and 8.0
-    install_nuget(nuget_path, SYSTEM_IO_PORTS, SYSTEM_IO_PORTS_VERSION)
+    install_nuget(nuget_path, SYSTEM_IO_PORTS, "")
 
     # Copy the AACommServer.exe and AACommServerAPI.dll to the working directory
     for dirname in os.listdir(os.path.dirname(nuget_path)):

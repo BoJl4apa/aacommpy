@@ -41,13 +41,13 @@ def copy_nuget_dependencies(version, dest_dir):
     :param dest_dir: Destination directory for the DLLs.
     """
     nuget_path = os.path.join(os.path.dirname(__file__), NUGET_FOLDER)
-    for dir in os.listdir(os.path.dirname(nuget_path)):
-        if dir.startswith(YAML_DOT_NET) and YAML_DOT_NET_40_VER not in dir and os.path.isdir(os.path.join(os.path.dirname(nuget_path), dir)):
+    for dir in os.listdir(nuget_path):
+        if dir.startswith(YAML_DOT_NET) and YAML_DOT_NET_40_VER not in dir:
             YAML_DOT_NET_VER = dir.split('.')[1:]
-            YAML_DOT_NET_VER = f'{YAML_DOT_NET}.'.join(YAML_DOT_NET_VER)
-        if dir.startswith(SYSTEM_IO_PORTS) and os.path.isdir(os.path.join(os.path.dirname(nuget_path), dir)):
-            SYSTEM_IO_PORTS_VERSION = dir.split('.')[1:]
-            SYSTEM_IO_PORTS_VERSION = f'{SYSTEM_IO_PORTS}.'.join(SYSTEM_IO_PORTS_VERSION)
+            YAML_DOT_NET_VER = '.'.join(YAML_DOT_NET_VER)
+        elif dir.startswith(SYSTEM_IO_PORTS):
+            SYSTEM_IO_PORTS_VERSION = dir.split('.')[3:]
+            SYSTEM_IO_PORTS_VERSION = '.'.join(SYSTEM_IO_PORTS_VERSION)
 
     if version == NET40:
         copy_dll(YAML_DOT_NET   , YAML_DOT_NET_40_VER       , "net35", dest_dir)
