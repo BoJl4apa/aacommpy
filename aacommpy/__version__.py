@@ -1,7 +1,7 @@
 
 __title__ = 'aacommpy'
 __description__ = 'aacommpy - AAComm nuget package wrapper'
-__version__ = '0.2.1'
+__version__ = '0.2.2'
 __author__ = 'HIEU and DB'
 __author_email__ = 'daniel.brousser@akribis-sys.com'
 __license__ = 'MIT'
