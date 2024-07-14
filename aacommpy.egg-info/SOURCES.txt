@@ -1,10 +1,12 @@
 README.md
+setup.cfg
 setup.py
 aacommpy/AAComm.py
 aacommpy/__init__.py
 aacommpy/__version__.py
 aacommpy/aacommpy.py
 aacommpy/category.py
+aacommpy/dotnetmanagement.py
 aacommpy/entry_points.py
 aacommpy/nugetmanagement.py
 aacommpy/settings.py

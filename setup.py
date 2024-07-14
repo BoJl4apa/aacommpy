@@ -4,7 +4,7 @@ from setuptools import setup
 about = {
     'name': 'aacommpy',
     'description': 'A Python package for wrapping aacomm nuget package',
-    'version': '0.2.0',
+    'version': '0.2.1',
     'author': 'HIEU and DB',
     'author_email': 'daniel.brousser@akribis-sys.com',
     'url': 'https://github.com/BoJl4apa/aacommpy',
