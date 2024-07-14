@@ -1,5 +1,5 @@
 import argparse
-import argparse
+
 from aacommpy.dotnetmanagement import check_dotnet_versions
 from aacommpy.nugetmanagement import download_aacomm_nuget, download_nuget_exe, nuget_version, update_nuget, dotnetfw
 from aacommpy.settings import DEFAULT_NET_FRAMEWORK, NET_FRAMEWORK_CHOICES

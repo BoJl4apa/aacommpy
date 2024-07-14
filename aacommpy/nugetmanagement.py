@@ -3,11 +3,10 @@ import shutil
 import subprocess
 import threading
 import time
-
 import requests
 
-from dotnetmanagement import copy_nuget_dependencies
-from settings import AACOMM_DLL, AACOMMSERVER, AGITO_AACOMM, DEFAULT_NET_FRAMEWORK, NET_FRAMEWORK_CHOICES, NUGET_EXE, NUGET_FOLDER, SYSTEM_IO_PORTS, YAML_DOT_NET, YAML_DOT_NET_40_VER
+from aacommpy.dotnetmanagement import copy_nuget_dependencies
+from aacommpy.settings import AACOMM_DLL, AACOMMSERVER, AGITO_AACOMM, DEFAULT_NET_FRAMEWORK, NET_FRAMEWORK_CHOICES, NUGET_EXE, NUGET_FOLDER, SYSTEM_IO_PORTS, YAML_DOT_NET, YAML_DOT_NET_40_VER
 
 def dotnetfw(version: str = DEFAULT_NET_FRAMEWORK) -> None:
     if version not in NET_FRAMEWORK_CHOICES:
