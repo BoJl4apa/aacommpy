@@ -3,7 +3,7 @@ import re
 import os
 import shutil
 
-from aacommpy.settings import NET_FRAMEWORK_CHOICES, TARGET_FRAMEWORKS, NUGET_FOLDER, YAML_DOT_NET, YAML_DOT_NET_40_VER, SYSTEM_IO_PORTS
+from aacommpy.settings import NET_FRAMEWORK_CHOICES, TARGET_FRAMEWORKS, TARGET_FOLDER, YAML_DOT_NET, YAML_DOT_NET_40_SRC_VER, YAML_DOT_NET_40_VER, SYSTEM_IO_PORTS, YAML_DOT_NET_48_SRC_VER
 from aacommpy.settings import NET40, NET48, NET60, NET80
 
 def check_dotnet_versions():
@@ -40,8 +40,7 @@ def copy_nuget_dependencies(version, dest_dir):
     :param version: The .NET target framework version.
     :param dest_dir: Destination directory for the DLLs.
     """
-    nuget_path = os.path.join(os.path.dirname(__file__), NUGET_FOLDER)
-    for dir in os.listdir(nuget_path):
+    for dir in os.listdir(TARGET_FOLDER):
         if dir.startswith(YAML_DOT_NET) and YAML_DOT_NET_40_VER not in dir:
             YAML_DOT_NET_VER = dir.split('.')[1:]
             YAML_DOT_NET_VER = '.'.join(YAML_DOT_NET_VER)
@@ -50,9 +49,9 @@ def copy_nuget_dependencies(version, dest_dir):
             SYSTEM_IO_PORTS_VERSION = '.'.join(SYSTEM_IO_PORTS_VERSION)
 
     if version == NET40:
-        copy_dll(YAML_DOT_NET   , YAML_DOT_NET_40_VER       , "net35", dest_dir)
+        copy_dll(YAML_DOT_NET   , YAML_DOT_NET_40_VER       , YAML_DOT_NET_40_SRC_VER, dest_dir)
     elif version == NET48:
-        copy_dll(YAML_DOT_NET   , YAML_DOT_NET_VER          , "net47", dest_dir)
+        copy_dll(YAML_DOT_NET   , YAML_DOT_NET_VER          , YAML_DOT_NET_48_SRC_VER, dest_dir)
     elif version == NET60 or version == NET80:
         copy_dll(YAML_DOT_NET   , YAML_DOT_NET_VER          , version, dest_dir)
         copy_dll(SYSTEM_IO_PORTS, SYSTEM_IO_PORTS_VERSION   , version, dest_dir)
@@ -68,8 +67,7 @@ def copy_dll(package_name, package_version, framework_version, dest_dir):
     :param framework_version: Target framework version.
     :param dest_dir: Destination directory for the DLL.
     """
-    nuget_path = os.path.join(os.path.dirname(__file__), NUGET_FOLDER)
-    dll_source_dir = os.path.join(nuget_path, f"{package_name}.{package_version}", "lib", framework_version)
+    dll_source_dir = os.path.join(TARGET_FOLDER, f"{package_name}.{package_version}", "lib", framework_version)
     dll_path = os.path.join(dll_source_dir, f"{package_name}.dll")
 
     if not os.path.isfile(dll_path):

@@ -10,12 +10,15 @@ NET_FRAMEWORK_CHOICES   = [NET40, NET48, NET60, NET80]
 TARGET_FRAMEWORKS       = ["4.0", "4.8", "6.0", "8.0"]
 DEFAULT_NET_FRAMEWORK   = NET48
 
+TARGET_FOLDER           = os.path.join(os.path.dirname(__file__), 'aacommpyDownloader-main')
 NUGET_EXE               = 'nuget.exe'
-NUGET_FOLDER            = 'aacommpyDownloader-main'
+NUGET_EXE_PATH          = os.path.join(TARGET_FOLDER, NUGET_EXE)
 
 # nuget dependencies and special case for .NET 4.0
 YAML_DOT_NET            = 'YamlDotNet'
 YAML_DOT_NET_40_VER     = '4.2.2'
+YAML_DOT_NET_40_SRC_VER = 'net35'
+YAML_DOT_NET_48_SRC_VER = 'net47'
 SYSTEM_IO_PORTS         = 'System.IO.Ports'
 
 AGITO_AACOMM            = 'Agito.AAComm'

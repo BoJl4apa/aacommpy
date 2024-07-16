@@ -1,7 +1,7 @@
 import argparse
 
 from aacommpy.dotnetmanagement import check_dotnet_versions
-from aacommpy.nugetmanagement import download_aacomm_nuget, download_nuget_exe, nuget_version, update_nuget, dotnetfw
+from aacommpy.nugetmanagement import download_aacomm_nuget, download_nuget_exe, aacomm_nuget_version, dotnetfw
 from aacommpy.settings import DEFAULT_NET_FRAMEWORK, NET_FRAMEWORK_CHOICES
 
 entry_points = {
@@ -52,9 +52,9 @@ def main() -> None:
         else:
             download_and_install()
     elif args.command == VERSION:
-        nuget_version()
+        aacomm_nuget_version()
     elif args.command == UPDATE:
-        update_nuget()
+        download_aacomm_nuget(update=True)
     elif args.command == DOTNETFW:
         if args.check:
             check_dotnet_versions()
