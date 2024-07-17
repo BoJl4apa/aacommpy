@@ -1,2 +1,0 @@
-[console_scripts]
-aacommpy = aacommpy.entry_points:main
