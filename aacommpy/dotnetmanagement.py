@@ -1,10 +1,7 @@
 import subprocess
 import re
-import os
-import shutil
 
-from aacommpy.settings import NET_FRAMEWORK_CHOICES, TARGET_FRAMEWORKS, TARGET_FOLDER, YAML_DOT_NET, YAML_DOT_NET_40_SRC_VER, YAML_DOT_NET_40_VER, SYSTEM_IO_PORTS, YAML_DOT_NET_48_SRC_VER
-from aacommpy.settings import NET40, NET48, NET60, NET80
+from aacommpy.settings import NET_FRAMEWORK_CHOICES, TARGET_FRAMEWORKS
 
 def check_dotnet_versions():
     target_versions = TARGET_FRAMEWORKS
@@ -32,51 +29,6 @@ def dotnetfw_from_dotnet_version(dotnet_version):
 #####################
 ### with GPT help! ##
 #####################
-
-def copy_nuget_dependencies(version, dest_dir):
-    """
-    Main function to copy the necessary DLLs based on the .NET target version.
-
-    :param version: The .NET target framework version.
-    :param dest_dir: Destination directory for the DLLs.
-    """
-    for dir in os.listdir(TARGET_FOLDER):
-        if dir.startswith(YAML_DOT_NET) and YAML_DOT_NET_40_VER not in dir:
-            YAML_DOT_NET_VER = dir.split('.')[1:]
-            YAML_DOT_NET_VER = '.'.join(YAML_DOT_NET_VER)
-        elif dir.startswith(SYSTEM_IO_PORTS):
-            SYSTEM_IO_PORTS_VERSION = dir.split('.')[3:]
-            SYSTEM_IO_PORTS_VERSION = '.'.join(SYSTEM_IO_PORTS_VERSION)
-
-    if version == NET40:
-        copy_dll(YAML_DOT_NET   , YAML_DOT_NET_40_VER       , YAML_DOT_NET_40_SRC_VER, dest_dir)
-    elif version == NET48:
-        copy_dll(YAML_DOT_NET   , YAML_DOT_NET_VER          , YAML_DOT_NET_48_SRC_VER, dest_dir)
-    elif version == NET60 or version == NET80:
-        copy_dll(YAML_DOT_NET   , YAML_DOT_NET_VER          , version, dest_dir)
-        copy_dll(SYSTEM_IO_PORTS, SYSTEM_IO_PORTS_VERSION   , version, dest_dir)
-    else:
-        raise ValueError(f"Unsupported .NET target framework version: {version}")
-
-def copy_dll(package_name, package_version, framework_version, dest_dir):
-    """
-    Copy the DLL for the specified package, version, and framework to the destination directory.
-
-    :param package_name: Name of the NuGet package.
-    :param package_version: Version of the NuGet package.
-    :param framework_version: Target framework version.
-    :param dest_dir: Destination directory for the DLL.
-    """
-    dll_source_dir = os.path.join(TARGET_FOLDER, f"{package_name}.{package_version}", "lib", framework_version)
-    dll_path = os.path.join(dll_source_dir, f"{package_name}.dll")
-
-    if not os.path.isfile(dll_path):
-        raise FileNotFoundError(f"Could not find {package_name}.dll in {dll_source_dir}.")
-
-    shutil.copy2(dll_path, dest_dir)
-    print(f"The {package_name} .NET target framework is {framework_version}")
-
-# check installed .net target frameworks
 
 def query_registry_key(path, value):
     try:

@@ -1,6 +1,11 @@
 from aacommpy.settings import AACOMM_SERVER_EXE_PATH
 from aacommpy.AAComm import CommAPI, Services, Shared
 
+##########################
+# run like this:
+# python -m aacommpy.test
+##########################
+
 api = CommAPI()
 
 status = CommAPI.StartAACommServer(AACOMM_SERVER_EXE_PATH)
@@ -23,3 +28,5 @@ cData.ET_Port = 5000
 
 res = api.Connect(cData)
 print(res)
+
+api.CloseAACommServer()

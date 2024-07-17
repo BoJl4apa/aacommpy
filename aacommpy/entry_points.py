@@ -4,6 +4,11 @@ from aacommpy.dotnetmanagement import check_dotnet_versions
 from aacommpy.nugetmanagement import download_aacomm_nuget, download_nuget_exe, aacomm_nuget_version, dotnetfw
 from aacommpy.settings import DEFAULT_NET_FRAMEWORK, NET_FRAMEWORK_CHOICES
 
+##########################
+# run like this:
+# python -m aacommpy.entry_points install
+##########################
+
 entry_points = {
     'console_scripts': [
         'nuget_download = nugetmanagement:download_nuget',

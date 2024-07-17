@@ -3,6 +3,7 @@ __pycache__/
 build/
 dist/
 aacommpyDownloader-main/
+.egg-info/
 AAComm.dll
 AACommServer.exe
 AACommServerAPI.dll
